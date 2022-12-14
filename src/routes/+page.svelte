@@ -432,12 +432,13 @@
             
             .inputs .input-group {
                 margin-bottom: 20px;
+
+                .value-container {
+                    display: none;
+                }
+
                 span {
                     font-size: 14px;
-
-                    &.value {
-                        display: none;
-                    }
                 }
             }
         }
