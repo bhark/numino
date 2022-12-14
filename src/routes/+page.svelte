@@ -35,7 +35,6 @@
             const angle = baseline * i
 
             let connection = getDigitalRoot((label * state.multiplier) % state.modulus)
-            console.log(`Connecting ${label} with ${connection}`)
             
             // const digitalRoot = getDigitalRoot(label * state.multiplier)
             // const connection = !digitalRoot 
@@ -100,7 +99,9 @@
         const { x: startX, y: startY } = calculatePosition(startAngle)
         const { x: endX, y: endY } = calculatePosition(endAngle)
         const distance = Math.hypot((startX - endX), (startY - endY))
-        const color = Math.min((distance / 200) * 100, 2000)
+        const distancePercentage = (distance / (circleData.radius * 2)) * 100
+        const color = (360 * distancePercentage) / 100
+        console.log(`${Math.floor(distance)} becomes ${Math.floor(color)}`)
         context.moveTo(startX, startY)
         context.lineTo(endX, endY)
         context.strokeStyle = `hsl(${color}, 90%, 50%)`
