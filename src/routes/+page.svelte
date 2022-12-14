@@ -150,7 +150,16 @@
 
 </script>
 
-<svelte:window bind:innerHeight={windowHeight} bind:innerWidth={windowWidth} />
+<svelte:window 
+    bind:innerHeight={windowHeight} 
+    bind:innerWidth={windowWidth}
+    on:keydown={(e) => {
+        if (e.key === ' ' || e.code === 'Space') {
+            state.modulus = Math.floor(Math.random() * 1000)
+            state.multiplier = Math.floor(Math.random() * 1000)
+            render()
+        }
+    }} />
 
 <div class="main">
 
@@ -195,7 +204,11 @@
         }}>Tilfældig</button>
     </div>
 
-    <canvas id="canvas" class:handles-hidden={!handlesShown} />
+    <canvas on:click={() => {
+        state.modulus = Math.floor(Math.random() * 1000)
+        state.multiplier = Math.floor(Math.random() * 1000)
+        render()
+    }} id="canvas" class:handles-hidden={!handlesShown} />
 
     <span class="tm">
         <span class="text">Til Far, fra din Søn</span>
