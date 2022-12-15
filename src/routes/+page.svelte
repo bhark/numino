@@ -110,8 +110,11 @@
     
     const render = () => {
 
-        if (state.modulus <= 7)
-            state.modulus = 8
+        if (state.modulus <= 1)
+            state.modulus = 1
+
+        if (state.multiplier <= 1)
+            state.multiplier = 1
         
         // get reference to canvas
         const context = document.querySelector('canvas').getContext('2d')
